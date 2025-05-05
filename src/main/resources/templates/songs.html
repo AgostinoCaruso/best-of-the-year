@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Best Songs</h1>
+    
+    <!-- Itera sulla lista di canzoni e mostra le proprietà -->
+    <ul>
+        <li th:each="song : ${songs}">
+            <span th:text="${song.id}">Song ID</span> - <span th:text="${song.title}">Song Title</span> 
+        </li>
+    </ul>
+</body>
+</html>
