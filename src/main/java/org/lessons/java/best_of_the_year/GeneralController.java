@@ -5,6 +5,8 @@ import org.lessons.java.best_of_the_year.Classes.Song;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,12 +26,26 @@ public class GeneralController {
         model.addAttribute("movies", movies);
         return "movies";
     }
+    @GetMapping("/movies/{id}")
+    public String movieDetails(Model model, @PathVariable int id) {
+        List<Movie> movies = getBestMovies();
+        Movie movie = movies.stream().filter(m -> m.getId() == id).findFirst().orElse(null);
+        model.addAttribute("movie", movie);
+        return "movieDetails";
+    }
 
     @GetMapping("/songs")
     public String songs(Model model){
         List<Song> songs = getBestSongs();
         model.addAttribute("songs", songs);
         return "songs";
+    }
+    @GetMapping("/songs/{id}")
+    public String songDetails(Model model, @PathVariable int id) {
+        List<Song> songs = getBestSongs();
+        Song song = songs.stream().filter(s -> s.getId() == id).findFirst().orElse(null);
+        model.addAttribute("song", song);
+        return "songDetails";
     }
 
     private List<Movie> getBestMovies(){
