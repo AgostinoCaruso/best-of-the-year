@@ -2,9 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" />
     <title>Home</title>
 </head>
 <body>
-    <h1 th:text="${title}"/>
+    <th:block th:replace="~{layout :: navbar}"/>
+    <h1 class="text-center" th:text="${title}"/>
 </body>
 </html>
